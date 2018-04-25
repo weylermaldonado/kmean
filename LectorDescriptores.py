@@ -3,7 +3,7 @@ import re
 import sys
 from math import sqrt
 
-#Para hacer uso de esta clase generar un objeto a través del constructor nulo (sin argumentos)
+#Para hacer uso de esta clase generar un objeto a traves del constructor nulo (sin argumentos)
 #y llamar a la funcion cargarDatos.
 
 class LectorDescriptores:

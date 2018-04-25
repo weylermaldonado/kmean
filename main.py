@@ -3,24 +3,24 @@ import math
 from LectorDescriptores import LectorDescriptores
 from DataPoint import DataPoint
 from Centroid import Centroid
-
 NUM_CLUSTERS = 2
 TOTAL_DATA = 8
-LOWEST_SAMPLE_POINT = 0 #element 0 of SAMPLES.
-HIGHEST_SAMPLE_POINT = 3 #element 3 of SAMPLES.
+LOWEST_SAMPLE_POINT = 0 
+HIGHEST_SAMPLE_POINT = 3 
 BIG_NUMBER = math.pow(10, 10)
 
 SAMPLES = [[1.0, 1.0], [1.5, 2.0], [3.0, 4.0], [5.0, 7.0], [3.5, 5.0], [4.5, 5.0], [3.5, 4.5], [6.0, 8.0]]
 
 data = []
 centroids = []
-
+lector = LectorDescriptores()
+dataSet = list()
+dataSet = lector.cargarDatos()
 
 
 
 def initialize_centroids():
-    # Set the centoid coordinates to match the data points furthest from each other.
-    # In this example, (1.0, 1.0) and (5.0, 7.0)
+    
     centroids.append(Centroid(SAMPLES[LOWEST_SAMPLE_POINT][0], SAMPLES[LOWEST_SAMPLE_POINT][1]))
     centroids.append(Centroid(SAMPLES[HIGHEST_SAMPLE_POINT][0], SAMPLES[HIGHEST_SAMPLE_POINT][1]))
     
@@ -31,9 +31,7 @@ def initialize_centroids():
     return
 
 def initialize_datapoints():
-    # DataPoint objects' x and y values are taken from the SAMPLE array.
-    # The DataPoints associated with LOWEST_SAMPLE_POINT and HIGHEST_SAMPLE_POINT are initially
-    # assigned to the clusters matching the LOWEST_SAMPLE_POINT and HIGHEST_SAMPLE_POINT centroids.
+   
     for i in range(TOTAL_DATA):
         newPoint = DataPoint(SAMPLES[i][0], SAMPLES[i][1])
         
@@ -49,7 +47,7 @@ def initialize_datapoints():
     return
 
 def get_distance(dataPointX, dataPointY, centroidX, centroidY):
-    # Calculate Euclidean distance.
+ 
     return math.sqrt(math.pow((centroidY - dataPointY), 2) + math.pow((centroidX - dataPointX), 2))
 
 def recalculate_centroids():
@@ -110,8 +108,7 @@ def print_results():
         for j in range(TOTAL_DATA):
             if(data[j].get_cluster() == i):
                 print("(", data[j].get_x(), ", ", data[j].get_y(), ")")
-        print()
-    
+        print()   
     return
 
 perform_kmeans()
