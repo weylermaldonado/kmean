@@ -19,3 +19,4 @@ class datosImagen:
         print("\n" ,self.nombreImagen)
         for i in self.vectorDescriptores:
             print("\n", i)
+    

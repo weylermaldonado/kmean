@@ -3,22 +3,42 @@ import math
 from LectorDescriptores import LectorDescriptores
 from DataPoint import DataPoint
 from Centroid import Centroid
-NUM_CLUSTERS = 2
-TOTAL_DATA = 8
-LOWEST_SAMPLE_POINT = 0 
-HIGHEST_SAMPLE_POINT = 3 
+NUM_CLUSTERS = 3
+TOTAL_DATA = 7
+A_SEED = 0 
+B_SEED = 71
+C_SEED = 141
 BIG_NUMBER = math.pow(10, 10)
 
-SAMPLES = [[1.0, 1.0], [1.5, 2.0], [3.0, 4.0], [5.0, 7.0], [3.5, 5.0], [4.5, 5.0], [3.5, 4.5], [6.0, 8.0]]
+# SAMPLES = [[1.0, 1.0], [1.5, 2.0], [3.0, 4.0], [5.0, 7.0], [3.5, 5.0], [4.5, 5.0], [3.5, 4.5], [6.0, 8.0]]
 
 data = []
-centroids = []
+# centroids = [200]
+centroid_A = list()
+centroid_B = list()
+centroid_C = list()
 lector = LectorDescriptores()
-dataSet = list()
+#dataSet = list()
 dataSet = lector.cargarDatos()
 
 
+def initialize_centroids():
+    
+    centroids_A = Centroid(dataSet[A_SEED].getNombreImagen(), dataSet[A_SEED].getVectorMomentosHu())
+    centroids_B = Centroid(dataSet[B_SEED].getNombreImagen(), dataSet[B_SEED].getVectorMomentosHu())
+    centroids_C = Centroid(dataSet[C_SEED].getNombreImagen(), dataSet[C_SEED].getVectorMomentosHu())
+    
 
+    
+    print("Centroides inicializados en:")
+    print("(", centroids_A.getNombreImagen() , ", ", centroids_A.getVectorMomentosHu() , ")")
+    print("(", centroids_B.getNombreImagen() , ", ", centroids_B.getVectorMomentosHu() , ")")
+    print("(", centroids_C.getNombreImagen() , ", ", centroids_C.getVectorMomentosHu() , ")")
+    print()
+    return
+    
+initialize_centroids()
+"""
 def initialize_centroids():
     
     centroids.append(Centroid(SAMPLES[LOWEST_SAMPLE_POINT][0], SAMPLES[LOWEST_SAMPLE_POINT][1]))
@@ -113,3 +133,4 @@ def print_results():
 
 perform_kmeans()
 print_results()
+"""
